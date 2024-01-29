@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Empleados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Empleados</ion-title>
+      <ion-buttons slot="end">
+        <!-- Use "end" to align items to the right -->
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="container-top">
+    <ion-searchbar placeholder="Buscar empleado"></ion-searchbar>
+    <ion-button color="success" (click)="navigateToAnotherRoute()">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Añadir
+    </ion-button>
+  </div>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+    <tr *ngFor="let id of obj.content">
+      <td>{{id.id}}</td>
+      <td>{{id.nombre}}</td>
+      <td>{{id.edad}}</td>
+      <td>
+        <button class="edit">Editar</button>
+      </td>
+      <td>
+        <button class="delete">Eliminar</button>
+      </td>
+      <td>
+        <button class="status">Cambiar estatus</button>
+      </td>
+    </tr>
+  </table>
+  {{ employees$ | async | json}}
+</ion-content>

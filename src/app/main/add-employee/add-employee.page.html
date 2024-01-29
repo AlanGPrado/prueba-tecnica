@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Añadir Empleado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Añadir Empleado</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="parent-container">
+    <div class="child-container">
+      <form class="form" [formGroup]="myForm">
+        <input type="text" id="name" formControlName="name" placeholder="Nombre">
+        <!-- <input type="text" id="name" formControlName="name" placeholder="Fecha de nacimiento"> -->
+        <ion-button (click)="openDatePicker()">Fecha de Nacimiento</ion-button>
+        <input type="text" id="age" formControlName="age" placeholder="Edad (autocalculable)">
+        <select>
+          <option *ngFor="let cargo of cargos.content" [value]="cargo.descripcion">{{cargo.descripcion}}</option>
+        </select>
+
+        <button type="submit">Añadir</button>
+      </form>
+    </div>
+  </div>
+</ion-content>

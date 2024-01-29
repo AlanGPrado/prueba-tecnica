@@ -1,0 +1,37 @@
+{
+    "content": [
+        {
+            "id": 1,
+            "nombre": "Maria Mendoza Lopez",
+            "fechaNacimiento": 1653026400000,
+            "edad": 32,
+            "estatus": true,
+            "idCargo": 1
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "empty": false,
+            "sorted": true,
+            "unsorted": false
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 100,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 1,
+    "totalElements": 1,
+    "last": true,
+    "number": 0,
+    "sort": {
+        "empty": false,
+        "sorted": true,
+        "unsorted": false
+    },
+    "size": 10,
+    "numberOfElements": 1,
+    "first": true,
+    "empty": false
+}
