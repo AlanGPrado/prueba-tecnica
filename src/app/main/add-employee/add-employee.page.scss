@@ -1,6 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .parent-container {
@@ -8,13 +9,51 @@
   width: 100%;
   height: 100%;
   justify-content: center;
-}
 
-.child-container {
-  display: flex;
+  .child-container {
+    display: flex;
+    height: 45%;
 
-  ion-button {
-    --background: #3B3B3B;
-    --border-radius: unset;
+    input {
+      height: 30px !important;
+    }
+
+    select {
+      height: 30px;
+      color: #6C7575;
+    }
+
+    select:checked {
+      color: white !important;
+    }
+
+    ::ng-deep ion-button#birthday {
+      height: 30px !important;
+      min-height: unset !important;
+      --padding-start: 2px;
+      border: solid 1px #858585;
+      color: #6C7575;
+      --border-radius: unset;
+      // --background: #3B3B3B;
+
+      span{
+        text-align:left;
+        width:100%;
+      }
+    }
+
+    ion-button#submit {
+      --border-radius: unset;
+      --background: forestgreen;
+    }
+
+    ion-button#edit {
+      --border-radius: unset;
+      --background: #277bf9;
+    }
+
+    select.selected-option {
+      color: #FFFF;
+    }
   }
 }

@@ -8,6 +8,8 @@ import { EmployeesPageRoutingModule } from './employees-routing.module';
 
 import { EmployeesPage } from './employees.page';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -15,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     IonicModule,
     EmployeesPageRoutingModule,
+    MatPaginatorModule
   ],
-  declarations: [EmployeesPage]
+  declarations: [EmployeesPage, FilterPipe]
 })
 export class EmployeesPageModule {}

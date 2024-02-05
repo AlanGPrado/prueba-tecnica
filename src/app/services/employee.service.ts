@@ -18,7 +18,7 @@ export class EmployeeService {
   }
 
   get(id: Employee['id']) {
-    return this.http.get<Employee>(this.apiPath);
+    return this.http.get<Employee>(this.apiPath+id);
   }
 
   create(employee:CreateEmployee) {

@@ -1,13 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Añadir Empleado</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{formTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Añadir Empleado</ion-title>
+      <ion-title size="large">{{formTitle}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <div class="parent-container">
@@ -15,13 +18,17 @@
       <form class="form" [formGroup]="myForm">
         <input type="text" id="name" formControlName="name" placeholder="Nombre">
         <!-- <input type="text" id="name" formControlName="name" placeholder="Fecha de nacimiento"> -->
-        <ion-button (click)="openDatePicker()">Fecha de Nacimiento</ion-button>
-        <input type="text" id="age" formControlName="age" placeholder="Edad (autocalculable)">
-        <select>
-          <option *ngFor="let cargo of cargos.content" [value]="cargo.descripcion">{{cargo.descripcion}}</option>
+        <ion-button id="birthday" (click)="openDatePicker()"><span id="date">{{dateToRender}}</span></ion-button>
+        <input type="number" id="age" formControlName="age" placeholder="Edad">
+        <select formControlName="idCargo" [class.selected-option]="!!myForm.value.idCargo">
+          <option value="" disabled hidden>Cargo</option>
+          <option *ngFor="let cargo of cargos.content" [value]="cargo.id">{{cargo.descripcion}}</option>
         </select>
+        <ion-toggle [checked]="toggleStatus" (ionChange)="toggleStateChanged($event)" formControlName="status" *ngIf="!currentUserId">Estado:
+          {{statusName}}</ion-toggle>
 
-        <button type="submit">Añadir</button>
+        <ion-button type="submit" id="submit" (click)="addEmployee()" *ngIf="!currentUserId">Añadir</ion-button>
+        <ion-button type="submit" id="edit" (click)="editEmployee()" *ngIf="currentUserId">Editar</ion-button>
       </form>
     </div>
   </div>

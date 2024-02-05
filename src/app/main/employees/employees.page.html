@@ -14,33 +14,61 @@
     </ion-toolbar>
   </ion-header>
   <div class="container-top">
-    <ion-searchbar placeholder="Buscar empleado"></ion-searchbar>
+    <ion-searchbar (ionInput)="onSearchInputChange($event)" [value]="searchText" placeholder="Buscar empleado"></ion-searchbar>
     <ion-button color="success" (click)="navigateToAnotherRoute()">
       <ion-icon slot="start" name="add"></ion-icon>
       Añadir
     </ion-button>
   </div>
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Edad</th>
-      <th colspan="3">Acciones</th>
-    </tr>
-    <tr *ngFor="let id of obj.content">
-      <td>{{id.id}}</td>
-      <td>{{id.nombre}}</td>
-      <td>{{id.edad}}</td>
-      <td>
-        <button class="edit">Editar</button>
-      </td>
-      <td>
-        <button class="delete">Eliminar</button>
-      </td>
-      <td>
-        <button class="status">Cambiar estatus</button>
-      </td>
-    </tr>
-  </table>
-  {{ employees$ | async | json}}
+
+  <div *ngIf="isDesktop; else mobileView">
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th colspan="3">Acciones</th>
+      </tr>
+      <tr *ngFor="let employee of employees$ | async | filter: searchText">
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.age}}</td>
+        <td>
+          <ion-button class="edit" (click)="editEmployee(employee)" *ngIf="!employee.status">Editar</ion-button>
+        </td>
+        <td>
+          <!-- <button class="delete" (click)="deleteEmployee(employee.id)">Eliminar</button> -->
+          <ion-button class="delete" (click)="presentAlert(employee.id)">Eliminar</ion-button>
+        </td>
+        <td>
+          <ion-button class="status" (click)="presentAlertStatus(employee)">C. estatus</ion-button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <ng-template #mobileView>
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label class="ion-text-uppercase ion-text-bold">Id</ion-label>
+        <ion-label class="ion-text-uppercase ion-text-bold">Nombre</ion-label>
+        <ion-label class="ion-text-uppercase ion-text-bold">Edad</ion-label>
+        <ion-label class="ion-text-uppercase ion-text-bold" colSpan="3">Acciones</ion-label>
+      </ion-item>
+
+      <ion-item *ngFor="let employee of employees$ | async | filter: searchText">
+        <ion-label class="mobile-id">{{ employee.id }}</ion-label>
+        <ion-label class="mobile-name">{{ employee.name }}</ion-label>
+        <ion-label class="mobile-age">{{ employee.age }}</ion-label>
+        <div class="mobile-buttons">
+          <ion-button class="edit" (click)="editEmployee(employee)" *ngIf="!employee.status">Editar</ion-button>
+          <ion-button class="delete" (click)="presentAlert(employee.id)">Eliminar</ion-button>
+          <ion-button class="status" (click)="presentAlertStatus(employee)">C. estatus</ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+  <!-- <mat-paginator
+  [length]="50"></mat-paginator>
+  {{ employees$ | async | json}} -->
 </ion-content>

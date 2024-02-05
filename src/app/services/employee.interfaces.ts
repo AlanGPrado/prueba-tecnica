@@ -1,9 +1,9 @@
 export interface CreateEmployee {
-  nombre: string;
-  fechaNacimiento: string;
-  edad: number;
-  idCargo: string;
-  estatus: boolean;
+  name: string;
+  birthday: string;
+  age: number;
+  idCargo: number;
+  status: boolean;
 }
 
 export interface Employee extends CreateEmployee {

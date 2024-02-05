@@ -2,11 +2,35 @@
     "content": [
         {
             "id": 1,
-            "nombre": "Maria Mendoza Lopez",
-            "fechaNacimiento": 1653026400000,
-            "edad": 32,
-            "estatus": true,
+            "name": "Maria Mendoza Lopez",
+            "birthday": 1653026400000,
+            "age": 32,
+            "status": true,
+            "idCargo": 2
+        },
+        {
+            "name": "Marielosha",
+            "birthday": 946706400000,
+            "age": 24,
+            "status": false,
+            "id": 1706690451289,
             "idCargo": 1
+        },
+        {
+            "name": "Alan Prado",
+            "birthday": -64800000,
+            "age": 24,
+            "status": false,
+            "idCargo": 3,
+            "id": 1707028068251
+        },
+        {
+            "name": "w",
+            "birthday": -2208965004000,
+            "age": 323,
+            "status": false,
+            "idCargo": 2,
+            "id": 1707128169578
         }
     ],
     "pageable": {
@@ -22,7 +46,7 @@
         "unpaged": false
     },
     "totalPages": 1,
-    "totalElements": 1,
+    "totalElements": 4,
     "last": true,
     "number": 0,
     "sort": {
@@ -31,7 +55,7 @@
         "unsorted": false
     },
     "size": 10,
-    "numberOfElements": 1,
+    "numberOfElements": 4,
     "first": true,
     "empty": false
 }

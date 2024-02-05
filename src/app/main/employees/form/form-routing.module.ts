@@ -5,11 +5,11 @@ import { FormPage } from './form.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'create',
     component: FormPage
   },
   {
-    path: ':id',
+    path: 'edit/:id',
     component: FormPage
   }
 ];
