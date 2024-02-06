@@ -5,14 +5,14 @@
             "name": "Maria Mendoza Lopez",
             "birthday": 1653026400000,
             "age": 32,
-            "status": true,
+            "status": false,
             "idCargo": 2
         },
         {
             "name": "Marielosha",
             "birthday": 946706400000,
             "age": 24,
-            "status": false,
+            "status": true,
             "id": 1706690451289,
             "idCargo": 1
         },
@@ -31,6 +31,22 @@
             "status": false,
             "idCargo": 2,
             "id": 1707128169578
+        },
+        {
+            "name": "test",
+            "birthday": -915130800000,
+            "age": 22,
+            "status": false,
+            "idCargo": 2,
+            "id": 1707219815336
+        },
+        {
+            "name": "w",
+            "birthday": -2208965004000,
+            "age": 22,
+            "status": false,
+            "idCargo": 2,
+            "id": 1707224268924
         }
     ],
     "pageable": {
@@ -46,7 +62,7 @@
         "unpaged": false
     },
     "totalPages": 1,
-    "totalElements": 4,
+    "totalElements": 6,
     "last": true,
     "number": 0,
     "sort": {
@@ -55,7 +71,7 @@
         "unsorted": false
     },
     "size": 10,
-    "numberOfElements": 4,
+    "numberOfElements": 6,
     "first": true,
     "empty": false
 }

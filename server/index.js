@@ -63,16 +63,16 @@ app.listen(port, () => {
 
 
 
-function getPagination({ page, size }) {
+function getPagination({ query, page, size }) {
+  const filteredContent = getContent(query)
   page = Number(page || 1);
   size = Number(size || 5);
-  const len = data.content.length;
+  const len = filteredContent.length;
   const start = (page - 1) * size;
-  const content = data.content.slice(start, start+size)
+  const content = filteredContent.slice(start, start + size)
   const totalPages = Math.ceil(len / size);
   return {
     content,
-
     "pageable": {
       "sort": {
         "empty": false,
@@ -100,4 +100,31 @@ function getPagination({ page, size }) {
     "empty": false
 
   }
+}
+
+
+function getContent(query) {
+  if (!query) return data.content;
+  const cargoDescriptions = [
+    {
+      "id": 1,
+      "descripcion": "Gerente"
+    },
+    {
+      "id": 2,
+      "descripcion": "Coordinador"
+    },
+    {
+      "id": 3,
+      "descripcion": "Subdirector"
+    }
+  ];
+  const employeesWithDescriptions = data.content.map(employee => {
+    const matchingDescription = cargoDescriptions.find(cargo => cargo.id === employee.idCargo);
+    const description = matchingDescription ? matchingDescription.descripcion : "Unknown";
+    return { ...employee, description };
+  });
+  query = query.toLowerCase();
+  console.log(employeesWithDescriptions,"JAIL")
+  return employeesWithDescriptions.filter(e => e.name.toLowerCase().includes(query) || String(e.id).includes(query) || e.description.toLowerCase().includes(query));
 }

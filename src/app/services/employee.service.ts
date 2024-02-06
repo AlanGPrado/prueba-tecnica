@@ -12,8 +12,9 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getAll(options: EmployeeSearchOptions ={}) {
-    const params = new HttpParams();
-    Object.entries(options).forEach(([key, value]) => params.set(key,value));
+    const params = new HttpParams({fromObject: options as any});
+    /* Object.entries(options).forEach(([key, value]) => params.set(key,value));*/
+    console.log(options, params.toString());
     return this.http.get<EmployeeSearchResult>(this.apiPath, { params });
   }
 

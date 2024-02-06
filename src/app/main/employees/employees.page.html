@@ -29,7 +29,7 @@
         <th>Edad</th>
         <th colspan="3">Acciones</th>
       </tr>
-      <tr *ngFor="let employee of employees$ | async | filter: searchText">
+      <tr *ngFor="let employee of employees$ | async">
         <td>{{employee.id}}</td>
         <td>{{employee.name}}</td>
         <td>{{employee.age}}</td>
@@ -56,7 +56,7 @@
         <ion-label class="ion-text-uppercase ion-text-bold" colSpan="3">Acciones</ion-label>
       </ion-item>
 
-      <ion-item *ngFor="let employee of employees$ | async | filter: searchText">
+      <ion-item *ngFor="let employee of employees$ | async">
         <ion-label class="mobile-id">{{ employee.id }}</ion-label>
         <ion-label class="mobile-name">{{ employee.name }}</ion-label>
         <ion-label class="mobile-age">{{ employee.age }}</ion-label>
@@ -68,7 +68,11 @@
       </ion-item>
     </ion-list>
   </ng-template>
-  <!-- <mat-paginator
-  [length]="50"></mat-paginator>
-  {{ employees$ | async | json}} -->
+  <mat-paginator *ngIf="response$ | async as resp"
+  [pageIndex]="resp.pageable.pageNumber-1"
+  [pageSize] = "resp.pageable.pageSize"
+  [length] = "resp.totalElements"
+  (page)="this.setPageEvent($event)"
+  ></mat-paginator>
+  <!-- {{ employees$ | async | json}} -->
 </ion-content>
